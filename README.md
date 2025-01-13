@@ -1,1 +1,1 @@
-# Harkirat Cohort 3.0
+# Harkirat Singh Cohort 3.0
