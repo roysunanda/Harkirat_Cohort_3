@@ -3,6 +3,13 @@ import express from "express";
 const app = express();
 const PORT = 8080;
 
+// app.use(express.static("public"));
+
+app.get("/", (req, res) => {
+  // console.log(`This is Homepage.`);
+  res.send(`This is Homepage.`);
+});
+
 app.get("/sum", (req, res) => {
   const a = parseInt(req.query.a);
   const b = parseInt(req.query.b);
@@ -28,6 +35,14 @@ app.get("/divide", (req, res) => {
   });
 });
 
+app.get("/subtract", function (req, res) {
+  const a = parseInt(req.query.a);
+  const b = parseInt(req.query.b);
+  res.json({
+    ans: a - b,
+  });
+});
+
 app.listen(PORT, () => {
-  console.log(`Server is listening at Port: ${PORT}`);
+  console.log(`\n\nServer is listening at Port: ${PORT}`);
 });
