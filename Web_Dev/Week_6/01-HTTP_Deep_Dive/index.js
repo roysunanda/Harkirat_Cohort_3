@@ -5,7 +5,7 @@ import crypto from "node:crypto";
 const app = express();
 const PORT = 3000;
 
-const users = [];
+const users = [{ username: "gopal", password: "54ndy" }];
 app.use(express.json());
 
 app.post("/signup", (req, res) => {
@@ -15,7 +15,6 @@ app.post("/signup", (req, res) => {
   users.push({
     username,
     password,
-    // token,
   });
 
   // console.log(users);
@@ -43,8 +42,12 @@ app.post("/signin", (req, res) => {
   res.json({ message: "✅ you are signed in.", token });
 });
 
-app.get("/", (req, res) => {
-  res.send(`This is Homepage.`);
+app.get("/users", (req, res) => {
+  const all_users = users.filter((user) => {
+    return true;
+  });
+
+  res.json({ data: all_users });
 });
 
 app.listen(PORT, () => {
